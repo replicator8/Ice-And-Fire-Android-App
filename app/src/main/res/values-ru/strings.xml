@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidBigApp</string>
+    <string name="onboardEnterBtn">Войти</string>
+    <string name="onboardRegisterBtn">Зарегистрироваться</string>
+    <string name="onboardTitle">Начать использование</string>
+    <string name="house_of_dragon_image">Картинка дом с драконом</string>
+    <string name="house_stark">Дом Старков</string>
+    <string name="house_lannister">Дом Ланнистеров</string>
+    <string name="house_baratheon">Дом Баратеонов</string>
+    <string name="house_targaryen">Дом Таргариенов</string>
+    <string name="great_houses">Великие дома</string>
+</resources>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AndroidBigApp</string>
+    <string name="onboardEnterBtn">Sign In</string>
+    <string name="onboardRegisterBtn">Sign Up</string>
+    <string name="onboardTitle">Start use</string>
+    <string name="house_of_dragon_image">House of dragon image</string>
+    <string name="house_stark">House Stark</string>
+    <string name="house_lannister">House Lannister</string>
+    <string name="house_baratheon">House Baratheon</string>
+    <string name="house_targaryen">House Targaryen</string>
+    <string name="great_houses">Great houses</string>
+</resources>
