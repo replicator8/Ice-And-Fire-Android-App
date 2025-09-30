@@ -25,20 +25,32 @@
             android:text="@string/onboardEnterBtn"
             style="@style/TitleTextStyle" />
 
+        <TextView
+            android:layout_width="298dp"
+            android:layout_height="wrap_content"
+            android:text="@string/your_email"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray" />
+
         <EditText
             android:id="@+id/etSignInEmail"
             android:autofillHints="emailAddress"
-            android:hint="@string/your_email"
             android:inputType="textEmailAddress"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:layout_marginHorizontal="20dp"
             style="@style/EditTextStyle"/>
 
+        <TextView
+            android:layout_width="298dp"
+            android:layout_height="wrap_content"
+            android:text="@string/your_password"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray" />
+
         <EditText
             android:id="@+id/etSignInPassword"
             android:autofillHints="password"
-            android:hint="@string/your_password"
             android:layout_marginHorizontal="20dp"
             android:inputType="textPassword"
             style="@style/EditTextStyle"/>

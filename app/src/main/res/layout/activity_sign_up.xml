@@ -25,46 +25,77 @@
             android:text="@string/onboardRegisterBtn"
             style="@style/TitleTextStyle" />
 
+        <TextView
+            android:layout_width="298dp"
+            android:layout_height="wrap_content"
+            android:text="@string/your_name"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray" />
+
         <EditText
             android:id="@+id/etName"
             android:autofillHints="name"
-            android:hint="@string/your_name"
+
             android:inputType="text"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:layout_marginHorizontal="20dp"
             style="@style/EditTextStyle"/>
 
+        <TextView
+            android:layout_width="298dp"
+            android:layout_height="wrap_content"
+            android:text="@string/your_age"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray" />
+
         <EditText
             android:id="@+id/etAge"
             android:autofillHints="username"
-            android:hint="@string/your_age"
             android:inputType="number"
             android:layout_marginHorizontal="20dp"
             style="@style/EditTextStyle"/>
 
+        <TextView
+            android:layout_width="298dp"
+            android:layout_height="wrap_content"
+            android:text="@string/your_email"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray" />
+
         <EditText
             android:id="@+id/etSignUpEmail"
             android:autofillHints="emailAddress"
-            android:hint="@string/your_email"
             android:inputType="textEmailAddress"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:layout_marginHorizontal="20dp"
             style="@style/EditTextStyle"/>
 
+        <TextView
+            android:layout_width="298dp"
+            android:layout_height="wrap_content"
+            android:text="@string/your_password"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray" />
+
         <EditText
             android:id="@+id/etSignUpPassword"
             android:autofillHints="password"
-            android:hint="@string/your_password"
             android:layout_marginHorizontal="20dp"
             android:inputType="textPassword"
             style="@style/EditTextStyle"/>
 
+        <TextView
+            android:layout_width="298dp"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm_password"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray" />
+
         <EditText
             android:id="@+id/etSignUpPassword2"
             android:autofillHints="password"
-            android:hint="@string/confirm_password"
             android:layout_marginHorizontal="20dp"
             android:inputType="textPassword"
             style="@style/EditTextStyle"/>
