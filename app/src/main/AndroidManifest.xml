@@ -16,9 +16,11 @@
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
+            android:windowSoftInputMode="stateVisible"
             android:exported="false" />
         <activity
             android:name=".SignInActivity"
+            android:windowSoftInputMode="stateVisible"
             android:exported="false" />
         <activity
             android:name=".OnboardActivity"

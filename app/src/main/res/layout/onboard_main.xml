@@ -9,6 +9,7 @@
     tools:context=".OnboardActivity">
 
     <ImageView
+        android:id="@+id/ivMainLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/house_of_dragon_image"
@@ -34,9 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/onboardTitle"
-            android:textSize="22sp"
-            android:fontFamily="@font/montserrat_bold"
-            android:textColor="@color/white"
+            style="@style/TitleTextStyle"
             android:layout_marginTop="30dp"/>
 
         <Button

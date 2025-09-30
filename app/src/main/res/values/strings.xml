@@ -9,4 +9,9 @@
     <string name="house_baratheon">House Baratheon</string>
     <string name="house_targaryen">House Targaryen</string>
     <string name="great_houses">Great houses</string>
+    <string name="your_email">Your email</string>
+    <string name="your_password">Your password</string>
+    <string name="your_name">Your name</string>
+    <string name="your_age">Your age</string>
+    <string name="confirm_password">Confirm password</string>
 </resources>
