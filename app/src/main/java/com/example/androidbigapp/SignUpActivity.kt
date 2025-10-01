@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnLayout
+import com.example.androidbigapp.extensions.debugging
 import com.example.androidbigapp.model.User
 
 class SignUpActivity : AppCompatActivity() {
@@ -16,6 +17,8 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_sign_up)
+
+        debugging("SignUpActivity - onCreate")
 
         val btnSignUp: Button = findViewById(R.id.btnSignUp)
         val nameET: EditText = findViewById(R.id.etName)
@@ -86,5 +89,39 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
 
+        debugging("SignUpActivity - onStart")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+
+        debugging("SignUpActivity - onRestart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        debugging("SignUpActivity - onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        debugging("SignUpActivity - onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        debugging("SignUpActivity - onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        debugging("SignUpActivity - onDestroy")
+    }
 }

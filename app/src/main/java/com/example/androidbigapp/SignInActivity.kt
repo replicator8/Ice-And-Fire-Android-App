@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnLayout
+import com.example.androidbigapp.extensions.debugging
 import com.example.androidbigapp.model.User
 
 class SignInActivity : AppCompatActivity() {
@@ -17,6 +18,8 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_sign_in)
+
+        debugging("SignInActivity - onCreate")
 
         val userFromSignUp = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra("EXTRA_USER", User::class.java)
@@ -59,7 +62,8 @@ class SignInActivity : AppCompatActivity() {
             }
 
             if (passwordET.text.length < 5) {
-                Toast.makeText(this, "Password should be more than 5 symbols", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Password should be more than 5 symbols", Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
 
@@ -74,7 +78,41 @@ class SignInActivity : AppCompatActivity() {
             intent.putExtra("EXTRA_STRING_PASSWORD", password)
             startActivity(intent)
         }
+    }
 
+    override fun onStart() {
+        super.onStart()
 
+        debugging("SignInActivity - onStart")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+
+        debugging("SignInActivity - onRestart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        debugging("SignInActivity - onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        debugging("SignInActivity - onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        debugging("SignInActivity - onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        debugging("SignInActivity - onDestroy")
     }
 }

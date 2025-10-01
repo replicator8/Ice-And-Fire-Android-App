@@ -6,12 +6,15 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.androidbigapp.extensions.debugging
 
 class OnboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.onboard_main)
+
+        debugging("OnboardActivity - onCreate")
 
         val btnOnbSignIn: Button = findViewById(R.id.btnOnboardSignIn)
         val btnOnbSignUp: Button = findViewById(R.id.btnOnboardSignUp)
@@ -38,5 +41,41 @@ class OnboardActivity : AppCompatActivity() {
                 cnt = 0
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        debugging("OnboardActivity - onStart")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+
+        debugging("OnboardActivity - onRestart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        debugging("OnboardActivity - onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        debugging("OnboardActivity - onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        debugging("OnboardActivity - onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        debugging("OnboardActivity - onDestroy")
     }
 }
