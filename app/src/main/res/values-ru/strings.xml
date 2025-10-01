@@ -10,4 +10,11 @@
     <string name="house_baratheon">Дом Баратеонов</string>
     <string name="house_targaryen">Дом Таргариенов</string>
     <string name="great_houses">Великие дома</string>
+    <string name="your_email">Ваш email</string>
+    <string name="your_password">Ваш пароль</string>
+    <string name="your_name">Ваше имя</string>
+    <string name="your_age">Ваш возраст</string>
+    <string name="confirm_password">Подтвердите пароль</string>
+    <string name="signUpBtnUnderline">Нету акканута? Зарегистрируйтесь!</string>
+    <string name="have_account_sign_in">Есть акканут? Войдите!</string>
 </resources>

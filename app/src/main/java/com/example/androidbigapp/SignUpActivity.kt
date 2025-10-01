@@ -21,6 +21,7 @@ class SignUpActivity : AppCompatActivity() {
         debugging("SignUpActivity - onCreate")
 
         val btnSignUp: Button = findViewById(R.id.btnSignUp)
+        val btnToSignIn: Button = findViewById(R.id.btnUndToSignIn)
         val nameET: EditText = findViewById(R.id.etName)
         val ageET: EditText = findViewById(R.id.etAge)
         val emailET: EditText = findViewById(R.id.etSignUpEmail)
@@ -31,6 +32,11 @@ class SignUpActivity : AppCompatActivity() {
             nameET.requestFocus()
             val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             imm.showSoftInput(nameET, InputMethodManager.SHOW_FORCED)
+        }
+
+        btnToSignIn.setOnClickListener {
+            val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
+            startActivity(intent)
         }
 
         btnSignUp.setOnClickListener {

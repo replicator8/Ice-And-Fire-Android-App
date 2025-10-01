@@ -30,6 +30,7 @@ class SignInActivity : AppCompatActivity() {
         println("HI BRO: $userFromSignUp")
 
         val btnSignIn: Button = findViewById(R.id.btnSignIn)
+        var btnToSignUp: Button = findViewById(R.id.btnUndToSignUp)
         val emailET: EditText = findViewById(R.id.etSignInEmail)
         val passwordET: EditText = findViewById(R.id.etSignInPassword)
 
@@ -76,6 +77,11 @@ class SignInActivity : AppCompatActivity() {
             val intent = Intent(this@SignInActivity, HomeActivity::class.java)
             intent.putExtra("EXTRA_STRING_EMAIL", email)
             intent.putExtra("EXTRA_STRING_PASSWORD", password)
+            startActivity(intent)
+        }
+
+        btnToSignUp.setOnClickListener {
+            val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
             startActivity(intent)
         }
     }

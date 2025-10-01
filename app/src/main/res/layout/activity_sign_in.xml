@@ -56,9 +56,14 @@
             style="@style/EditTextStyle"/>
 
         <Button
+            android:id="@+id/btnUndToSignUp"
+            android:text="@string/signUpBtnUnderline"
+            style="@style/ButtonUnderlineStyle"/>
+
+        <Button
             android:id="@+id/btnSignIn"
             style="@style/OnboardButtonStyle"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             android:text="@string/onboardEnterBtn"
             />
