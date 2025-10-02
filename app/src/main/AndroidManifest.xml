@@ -12,22 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidBigApp">
         <activity
-            android:name=".HomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SignUpActivity"
-            android:windowSoftInputMode="stateVisible"
-            android:exported="false" />
-        <activity
-            android:name=".SignInActivity"
-            android:windowSoftInputMode="stateVisible"
-            android:exported="false" />
-        <activity
-            android:name=".OnboardActivity"
+            android:name=".SingleActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
