@@ -2,41 +2,49 @@ package com.example.androidbigapp.fragments
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.androidbigapp.R
-import com.example.androidbigapp.SingleActivity
+import com.example.androidbigapp.databinding.FragmentOnboardBinding
 import com.example.androidbigapp.extensions.debugging
 
 class OnboardFragment: Fragment (R.layout.fragment_onboard) {
+
+    private var _binding: FragmentOnboardBinding? = null
+    private val binding: FragmentOnboardBinding
+        get() = _binding ?: throw RuntimeException()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        super.onCreate(savedInstanceState)
+        _binding = FragmentOnboardBinding.bind(view)
         activity?.debugging("OnboardFragment - onViewCreated")
 
-        val btnOnbSignIn: Button = view.findViewById(R.id.btnOnboardSignIn)
-        btnOnbSignIn.setOnClickListener {
+        binding.btnOnboardSignIn.setOnClickListener {
             activity?.debugging("Click to Sign In")
-            (activity as SingleActivity).navigate(SingleActivity.Companion.JUMP_TO_SIGN_IN)
+            findNavController().navigate(R.id.action_screen_start_to_sign_in)
         }
 
-        val btnOnbSignUp: Button = view.findViewById(R.id.btnOnboardSignUp)
-        btnOnbSignUp.setOnClickListener {
+        binding.btnOnboardSignUp.setOnClickListener {
             activity?.debugging("Click to SignUp")
-            (activity as SingleActivity).navigate(SingleActivity.Companion.JUMP_TO_SIGN_UP)
+            findNavController().navigate(R.id.action_screen_start_to_sign_up)
         }
 
         var cnt = 0
-        val mainLogo: ImageView = view.findViewById(R.id.ivMainLogo)
-        mainLogo.setOnClickListener {
+        binding.ivMainLogo.setOnClickListener {
             cnt++
             if (cnt == 10) {
-                val args = Bundle()
-                args.putString(SingleActivity.ADMIN, "TRUE")
-                (activity as SingleActivity).navigate(SingleActivity.JUMP_TO_HOME, args)
-                return@setOnClickListener
+                val action = OnboardFragmentDirections.actionScreenStartToHome(ADMIN = "TRUE")
+                findNavController().navigate(action)
                 cnt = 0
+                return@setOnClickListener
             }
         }
+
+        debugging("OnboardFragment.onViewCreated finished")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

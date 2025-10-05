@@ -2,31 +2,41 @@ package com.example.androidbigapp.fragments
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.example.androidbigapp.R
-import com.example.androidbigapp.SingleActivity
+import com.example.androidbigapp.databinding.FragmentHomeBinding
 import com.example.androidbigapp.extensions.debugging
 
 class HomeFragment: Fragment(R.layout.fragment_home) {
+
+    private var _binding: FragmentHomeBinding? = null
+    private val binding: FragmentHomeBinding
+        get() = _binding ?: throw RuntimeException()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        super.onCreate(savedInstanceState)
         activity?.debugging("HomeFragment - onViewCreated")
+        _binding = FragmentHomeBinding.bind(view)
 
-        val emailTV: TextView = view.findViewById(R.id.userEmailOnboard)
-
-        val email = arguments?.getString("EXTRA_STRING_EMAIL")
-        val password = arguments?.getString("EXTRA_STRING_PASSWORD")
-        val isAdmin = arguments?.getString(SingleActivity.ADMIN)
+        val args: HomeFragmentArgs by navArgs()
+        val email = args.EMAIL
+        val password = args.PASSWORD
+        val isAdmin = args.ADMIN
 
         if (email != null  && password != null) {
             println("USER EMAIL: $email")
             println("USER EMAIL: $password")
-            emailTV.text = email
+            binding.userEmailOnboard.text = email
         }
 
         if (isAdmin != null) {
-            emailTV.text = "ADMIN"
+            binding.userEmailOnboard.text = "ADMIN"
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
