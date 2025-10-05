@@ -3,25 +3,25 @@ package com.example.androidbigapp
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
-import androidx.fragment.app.add
 import com.example.androidbigapp.extensions.debugging
 import com.example.androidbigapp.fragments.OnboardFragment
 import com.example.androidbigapp.fragments.SignInFragment
 import com.example.androidbigapp.fragments.SignUpFragment
 import com.google.android.material.snackbar.Snackbar
-import com.example.androidbigapp.SingleActivity
 import com.example.androidbigapp.fragments.HomeFragment
 
 class SingleActivity: AppCompatActivity(R.layout.activity) {
     companion object {
         const val JUMP_TO_SIGN_IN = 1
-        const val JUMP_FROM_RETURNING = 2
-        const val JUMP_TO_SIGN_UP = 3
+        const val JUMP_TO_SIGN_UP = 2
 
-        const val JUMP_TO_HOME = 4
+        const val JUMP_TO_HOME = 3
 
         const val ADMIN: String = "ADMIN"
+        const val BACK_STACK_ONBOARD = "onboard"
+        const val BACK_STACK_AUTH = "auth"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,42 +33,56 @@ class SingleActivity: AppCompatActivity(R.layout.activity) {
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
-                add<OnboardFragment>(R.id.main)
+                replace(R.id.main, OnboardFragment::class.java, null)
+                addToBackStack(BACK_STACK_ONBOARD)
             }
         }
     }
 
-    fun navigate (jump : Int, args: Bundle? = null) : Unit {
+    fun navigate(jump: Int, args: Bundle? = null) {
         when (jump) {
             JUMP_TO_SIGN_IN -> {
-                debugging("Open fragment to Sign In")
+
+                supportFragmentManager.popBackStack(
+                    BACK_STACK_AUTH,
+                    FragmentManager.POP_BACK_STACK_INCLUSIVE
+                )
 
                 supportFragmentManager.commit {
-                    replace(R.id.main, SignInFragment::class.java, args)
                     setReorderingAllowed(true)
-                    addToBackStack("start")
+                    replace(R.id.main, SignInFragment::class.java, args)
+                    addToBackStack(BACK_STACK_AUTH)
                 }
             }
+
             JUMP_TO_SIGN_UP -> {
-                debugging("Open fragment to Sign Up")
+
+                supportFragmentManager.popBackStack(
+                    BACK_STACK_AUTH,
+                    FragmentManager.POP_BACK_STACK_INCLUSIVE
+                )
 
                 supportFragmentManager.commit {
-                    replace(R.id.main, SignUpFragment::class.java, null)
                     setReorderingAllowed(true)
-                    addToBackStack("start")
+                    replace(R.id.main, SignUpFragment::class.java, null)
+                    addToBackStack(BACK_STACK_AUTH)
                 }
             }
 
             JUMP_TO_HOME -> {
-                debugging("Open fragment to Home")
 
+                supportFragmentManager.popBackStack(
+                    BACK_STACK_AUTH,
+                    FragmentManager.POP_BACK_STACK_INCLUSIVE
+                )
                 supportFragmentManager.commit {
-                    replace(R.id.main, HomeFragment::class.java, args)
                     setReorderingAllowed(true)
-                    addToBackStack("start")
+                    replace(R.id.main, HomeFragment::class.java, args)
+                    addToBackStack(BACK_STACK_ONBOARD)
                 }
             }
-            else ->{debugging("Navigate Error")}
+
+            else -> debugging("Navigate Error")
         }
     }
 
