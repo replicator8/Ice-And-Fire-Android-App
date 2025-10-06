@@ -3,8 +3,10 @@ package com.example.androidbigapp.fragments
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.androidbigapp.R
+import com.example.androidbigapp.SingleActivity
 import com.example.androidbigapp.databinding.FragmentHomeBinding
 import com.example.androidbigapp.extensions.debugging
 
@@ -32,6 +34,28 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
 
         if (isAdmin != null) {
             binding.userEmailOnboard.text = "ADMIN"
+        }
+
+        with(binding) {
+            llHouse1.setOnClickListener {
+                val action = HomeFragmentDirections.actionScreenHomeToCharacters(HOUSE = 1)
+                findNavController().navigate(action)
+            }
+
+            llHouse2.setOnClickListener {
+                val action = HomeFragmentDirections.actionScreenHomeToCharacters(HOUSE = 2)
+                findNavController().navigate(action)
+            }
+
+            llHouse3.setOnClickListener {
+                val action = HomeFragmentDirections.actionScreenHomeToCharacters(HOUSE = 3)
+                findNavController().navigate(action)
+            }
+
+            llHouse4.setOnClickListener {
+                val action = HomeFragmentDirections.actionScreenHomeToCharacters(HOUSE = 4)
+                findNavController().navigate(action)
+            }
         }
     }
 
