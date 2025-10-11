@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/onboardTheme1"
+    android:layout_marginBottom="16dp"
+    android:layout_marginHorizontal="10dp"
+    app:cardCornerRadius="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvItemName"
+            style="@style/CharacterItemStyle"
+            android:text="@string/name"/>
+
+        <TextView
+            android:id="@+id/tvItemHouseName"
+            style="@style/CharacterItemStyle"
+            android:text="@string/house_name"/>
+
+        <TextView
+            android:id="@+id/tvItemGender"
+            style="@style/CharacterItemStyle"
+            android:text="@string/gender"/>
+
+        <TextView
+            android:id="@+id/tvItemParent"
+            style="@style/CharacterItemStyle"
+            android:text="@string/parent"/>
+
+        <TextView
+            android:id="@+id/tvItemActorName"
+            style="@style/CharacterItemStyle"
+            android:text="@string/actorName"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

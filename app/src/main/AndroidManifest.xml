@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,9 +12,10 @@
         android:label="Great Houses"
         android:roundIcon="@mipmap/stark_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.AndroidBigApp">
         <activity
-            android:name=".SingleActivity"
+            android:name=".presentation.SingleActivity"
             android:windowSoftInputMode="adjustResize"
             android:exported="true">
 

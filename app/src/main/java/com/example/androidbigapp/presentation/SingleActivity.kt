@@ -1,11 +1,12 @@
-package com.example.androidbigapp
+package com.example.androidbigapp.presentation
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import com.example.androidbigapp.extensions.debugging
+import com.example.androidbigapp.R
+import com.example.androidbigapp.presentation.extensions.debugging
 import com.google.android.material.snackbar.Snackbar
 
 class SingleActivity: AppCompatActivity(R.layout.activity) {

@@ -1,4 +1,4 @@
-package com.example.androidbigapp.fragments
+package com.example.androidbigapp.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -9,9 +9,9 @@ import com.example.androidbigapp.R
 import android.content.Context
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.androidbigapp.SingleActivity
+import com.example.androidbigapp.presentation.SingleActivity
 import com.example.androidbigapp.databinding.FragmentSignInBinding
-import com.example.androidbigapp.extensions.debugging
+import com.example.androidbigapp.presentation.extensions.debugging
 import kotlin.getValue
 
 class SignInFragment: Fragment(R.layout.fragment_sign_in) {

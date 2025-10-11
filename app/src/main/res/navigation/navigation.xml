@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/screen_start"
-        android:name="com.example.androidbigapp.fragments.OnboardFragment"
+        android:name="com.example.androidbigapp.presentation.fragments.OnboardFragment"
         tools:layout="@layout/fragment_onboard">
 
         <action
@@ -32,7 +32,7 @@
 
     <fragment
         android:id="@+id/screen_sign_up"
-        android:name="com.example.androidbigapp.fragments.SignUpFragment"
+        android:name="com.example.androidbigapp.presentation.fragments.SignUpFragment"
         tools:layout="@layout/fragment_sign_up">
 
         <action
@@ -45,7 +45,7 @@
 
     <fragment
         android:id="@+id/screen_sign_in"
-        android:name="com.example.androidbigapp.fragments.SignInFragment"
+        android:name="com.example.androidbigapp.presentation.fragments.SignInFragment"
         tools:layout="@layout/fragment_sign_in">
 
         <action
@@ -63,14 +63,14 @@
         <argument
             android:name="USER"
             android:defaultValue="@null"
-            app:argType="com.example.androidbigapp.model.User"
+            app:argType="com.example.androidbigapp.presentation.model.User"
             app:nullable="true"/>
 
     </fragment>
 
     <fragment
         android:id="@+id/screen_home"
-        android:name="com.example.androidbigapp.fragments.HomeFragment"
+        android:name="com.example.androidbigapp.presentation.fragments.HomeFragment"
         tools:layout="@layout/fragment_home">
 
         <action
@@ -99,7 +99,7 @@
 
     <fragment
         android:id="@+id/screen_characters"
-        android:name="com.example.androidbigapp.fragments.CharactersFragment"
+        android:name="com.example.androidbigapp.presentation.fragments.CharactersFragment"
         tools:layout="@layout/fragment_characters">
 
         <argument

@@ -17,4 +17,10 @@
     <string name="confirm_password">Подтвердите пароль</string>
     <string name="signUpBtnUnderline">Нету акканута? Зарегистрируйтесь!</string>
     <string name="have_account_sign_in">Есть акканут? Войдите!</string>
+    <string name="name">Имя</string>
+    <string name="house_name">Название дома</string>
+    <string name="gender">Гендер</string>
+    <string name="actorName">Имя актера</string>
+    <string name="parent">Родитель</string>
+    <string name="characters">Персонажи</string>
 </resources>

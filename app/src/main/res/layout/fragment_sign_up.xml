@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/ActivityBackgroundStyle"
-    tools:context=".fragments.SignUpFragment">
+    tools:context=".presentation.fragments.SignUpFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

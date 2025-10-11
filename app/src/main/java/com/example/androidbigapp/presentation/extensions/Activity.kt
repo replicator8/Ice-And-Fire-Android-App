@@ -1,4 +1,4 @@
-package com.example.androidbigapp.extensions
+package com.example.androidbigapp.presentation.extensions
 
 import android.app.Activity
 import android.util.Log

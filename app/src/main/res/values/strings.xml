@@ -16,4 +16,10 @@
     <string name="confirm_password">Confirm password</string>
     <string name="signUpBtnUnderline"><u>Don\'t have an account? Sign Up!</u></string>
     <string name="have_account_sign_in"><u>Have account? Sign In!</u></string>
+    <string name="name">Name</string>
+    <string name="house_name">House Name</string>
+    <string name="gender">Gender</string>
+    <string name="actorName">actorName</string>
+    <string name="parent">Parent</string>
+    <string name="characters">Characters</string>
 </resources>

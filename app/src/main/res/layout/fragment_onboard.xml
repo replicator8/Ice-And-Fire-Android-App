@@ -5,7 +5,7 @@
     android:background="@color/onboardBack"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.OnboardFragment">
+    tools:context=".presentation.fragments.OnboardFragment">
 
     <ImageView
         android:id="@+id/ivMainLogo"

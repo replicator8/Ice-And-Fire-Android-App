@@ -1,4 +1,4 @@
-package com.example.androidbigapp.fragments
+package com.example.androidbigapp.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.androidbigapp.R
 import com.example.androidbigapp.databinding.FragmentOnboardBinding
-import com.example.androidbigapp.extensions.debugging
+import com.example.androidbigapp.presentation.extensions.debugging
 
-class OnboardFragment: Fragment (R.layout.fragment_onboard) {
+class OnboardFragment: Fragment(R.layout.fragment_onboard) {
 
     private var _binding: FragmentOnboardBinding? = null
     private val binding: FragmentOnboardBinding

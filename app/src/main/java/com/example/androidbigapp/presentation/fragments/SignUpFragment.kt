@@ -1,4 +1,4 @@
-package com.example.androidbigapp.fragments
+package com.example.androidbigapp.presentation.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -8,10 +8,10 @@ import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.androidbigapp.R
-import com.example.androidbigapp.SingleActivity
+import com.example.androidbigapp.presentation.SingleActivity
 import com.example.androidbigapp.databinding.FragmentSignUpBinding
-import com.example.androidbigapp.extensions.debugging
-import com.example.androidbigapp.model.User
+import com.example.androidbigapp.presentation.extensions.debugging
+import com.example.androidbigapp.presentation.model.User
 
 class SignUpFragment: Fragment(R.layout.fragment_sign_up) {
 
