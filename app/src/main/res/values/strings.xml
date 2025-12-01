@@ -22,4 +22,25 @@
     <string name="actorName">actorName</string>
     <string name="parent">Parent</string>
     <string name="characters">Characters</string>
+    <string name="settings_title">Settings</string>
+    <string name="light_theme_text">Light</string>
+    <string name="tv_theme">Theme</string>
+    <string name="dark_theme_text">Dark</string>
+    <string name="app_language">App language</string>
+    <string name="russian">Russian</string>
+    <string name="english">English</string>
+    <string name="settings_button">Settings button</string>
+    <string name="notifications">Notifications</string>
+    <string name="allow_notifications">Allow</string>
+    <string name="backup_file_name">File name</string>
+    <string name="backup_characters_txt">backup_characters.txt</string>
+    <string name="enter_backup_filename">Enter file name</string>
+    <string name="backup_status">File status</string>
+    <string name="backup_not_found">File don\'t saved</string>
+    <string name="backup_found">File saved</string>
+    <string name="delete_file_btn">Delete file</string>
+    <string name="internal_backup_saved">Saved</string>
+    <string name="internal_backup_not_saved">Don\'t saved</string>
+    <string name="internal_backup_status">Backup copy</string>
+    <string name="recover_file">Recover file</string>
 </resources>

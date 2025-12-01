@@ -15,16 +15,11 @@ interface RetrofitNetworkApi {
     suspend fun getCharactersByHouseName(@Path("houseName") houseName: String): List<CharacterResponse>
 }
 
-private const val NETWORK_BASE_URL = "http://192.168.1.7:8080/api/got/"
+private const val NETWORK_BASE_URL = "http://172.20.10.5:8098/api/got/" // ipconfig getifaddr en0
 
 class RetrofitNetwork: RetrofitNetworkApi {
 
-    private val json = Json {
-        isLenient = true
-        ignoreUnknownKeys = true
-    }
-
-    private val networkApi: RetrofitNetworkApi by lazy {
+    private val networkApi: RetrofitNetworkApi by lazy {2
         Retrofit.Builder()
             .baseUrl(NETWORK_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

@@ -77,6 +77,10 @@
             android:id="@+id/action_screen_home_to_characters"
             app:destination="@id/screen_characters"/>
 
+        <action
+            android:id="@+id/action_screen_home_to_settings"
+            app:destination="@id/screen_settings"/>
+
         <argument
             android:name="ADMIN"
             android:defaultValue="@null"
@@ -94,6 +98,13 @@
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/screen_settings"
+        android:name="com.example.androidbigapp.presentation.fragments.SettingsFragment"
+        tools:layout="@layout/fragment_settings">
 
     </fragment>
 

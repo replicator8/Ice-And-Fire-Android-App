@@ -47,6 +47,7 @@ android {
 dependencies {
     // kotlin
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.recyclerview)
 
     // material design
     implementation(libs.material)
@@ -73,4 +74,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // data store
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
 }

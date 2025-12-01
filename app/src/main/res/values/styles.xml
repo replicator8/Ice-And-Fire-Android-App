@@ -36,6 +36,14 @@
         <item name="android:fontFamily">@font/montserrat_bold</item>
     </style>
 
+    <style name="RadioButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+    </style>
+
     <style name="EditTextStyle">
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_width">298dp</item>

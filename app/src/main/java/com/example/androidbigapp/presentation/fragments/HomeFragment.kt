@@ -55,6 +55,11 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
                 val action = HomeFragmentDirections.actionScreenHomeToCharacters(HOUSE = 4)
                 findNavController().navigate(action)
             }
+
+            ivSettings.setOnClickListener {
+                val action = HomeFragmentDirections.actionScreenHomeToSettings()
+                findNavController().navigate(action)
+            }
         }
     }
 

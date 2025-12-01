@@ -10,6 +10,7 @@ import com.example.androidbigapp.presentation.extensions.debugging
 import com.google.android.material.snackbar.Snackbar
 
 class SingleActivity: AppCompatActivity(R.layout.activity) {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         debugging("SingleActivity - onCreate")

@@ -32,7 +32,7 @@ class OnboardFragment: Fragment(R.layout.fragment_onboard) {
         var cnt = 0
         binding.ivMainLogo.setOnClickListener {
             cnt++
-            if (cnt == 10) {
+            if (cnt == 5) {
                 val action = OnboardFragmentDirections.actionScreenStartToHome(ADMIN = "TRUE")
                 findNavController().navigate(action)
                 cnt = 0

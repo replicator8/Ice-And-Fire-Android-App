@@ -26,6 +26,12 @@ class ApiResponseAdapter(private var items: List<CharacterResponse>) : RecyclerV
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun addData(newData: List<CharacterResponse>) {
+        this.items = items.union(newData) as List<CharacterResponse>
+        notifyDataSetChanged()
+    }
+
     class ApiResponseViewHolder(private val binding: CharacterBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(apiResponse: CharacterResponse) {
             with(binding) {

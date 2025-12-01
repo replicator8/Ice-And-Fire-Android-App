@@ -23,4 +23,24 @@
     <string name="actorName">Имя актера</string>
     <string name="parent">Родитель</string>
     <string name="characters">Персонажи</string>
+    <string name="tv_theme">Тема оформления</string>
+    <string name="dark_theme_text">Темная</string>
+    <string name="settings_title">Настройки</string>
+    <string name="light_theme_text">Светлая</string>
+    <string name="app_language">Язык приложения</string>
+    <string name="russian">Русский</string>
+    <string name="english">Английский</string>
+    <string name="settings_button">Кнопка настроек</string>
+    <string name="notifications">Уведомления</string>
+    <string name="allow_notifications">Разрешить</string>
+    <string name="backup_file_name">Имя файла резервной копии</string>
+    <string name="backup_characters_txt">backup_characters.txt</string>
+    <string name="enter_backup_filename">Введите имя файла</string>
+    <string name="backup_status">Статус резервной копии</string>
+    <string name="backup_not_found">Файла нет</string>
+    <string name="backup_found">Файл сохранён</string>
+    <string name="delete_file_btn">Удалить файл</string>
+    <string name="internal_backup_saved">Сохранена</string>
+    <string name="internal_backup_not_saved">Не сохранена</string>
+    <string name="internal_backup_status">Резервная копия (внутренняя)</string>
 </resources>
