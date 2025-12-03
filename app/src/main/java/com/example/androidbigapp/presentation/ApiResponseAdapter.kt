@@ -36,10 +36,10 @@ class ApiResponseAdapter(private var items: List<CharacterResponse>) : RecyclerV
         fun bind(apiResponse: CharacterResponse) {
             with(binding) {
                 tvItemName.text = apiResponse.characterName ?: "-"
-                tvItemHouseName.text = apiResponse.houseName?.get(0) ?: "-"
+                tvItemHouseName.text = apiResponse.houseName?.firstOrNull() ?: "-"
                 tvItemGender.text = apiResponse.gender ?: "-"
                 tvItemActorName.text = apiResponse.actorName ?: "-"
-                tvItemParent.text = apiResponse.parents?.get(0) ?: "-"
+                tvItemParent.text = apiResponse.parents?.firstOrNull() ?: "-"
             }
         }
     }

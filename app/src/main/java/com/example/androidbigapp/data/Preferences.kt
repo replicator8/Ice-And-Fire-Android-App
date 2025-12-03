@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -15,3 +16,5 @@ val BACKUP_FILENAME_KEY = stringPreferencesKey("backup_filename")
 val FILE_EXISTS_KEY = booleanPreferencesKey("file_exists")
 val FILE_SIZE_KEY = longPreferencesKey("file_size")
 val INTERNAL_BACKUP_EXISTS_KEY = booleanPreferencesKey("internal_backup_exists")
+val LAST_PAGE_KEY = intPreferencesKey("last_page")
+val HAS_NEXT_KEY = booleanPreferencesKey("has_next")

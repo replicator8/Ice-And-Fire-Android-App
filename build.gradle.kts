@@ -13,3 +13,7 @@ buildscript {
         classpath(libs.androidx.navigation.safe.args.gradle.plugin)
     }
 }
+
+configurations.all {
+    exclude(group = "com.intellij", module = "annotations")
+}

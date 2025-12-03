@@ -10,18 +10,26 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.androidbigapp.App
 import com.example.androidbigapp.data.BACKUP_FILENAME_KEY
 import com.example.androidbigapp.data.CharacterResponse
 import com.example.androidbigapp.data.FILE_EXISTS_KEY
 import com.example.androidbigapp.data.FILE_SIZE_KEY
+import com.example.androidbigapp.data.HAS_NEXT_KEY
+import com.example.androidbigapp.data.LAST_PAGE_KEY
 import com.example.androidbigapp.data.dataStore
 import com.example.androidbigapp.presentation.SingleActivity
 import com.example.androidbigapp.databinding.FragmentCharactersBinding
+import com.example.androidbigapp.entities.Character
+import com.example.androidbigapp.entities.toResponse
 import com.example.androidbigapp.network.RetrofitNetwork
 import com.example.androidbigapp.network.RetrofitNetworkApi
 import com.example.androidbigapp.presentation.ApiResponseAdapter
@@ -43,7 +51,7 @@ class CharactersFragment: Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        super.onViewCreated(view, savedInstanceState)
         activity?.debugging("CharactersFragment - onViewCreated")
 
         _retrofitApi = RetrofitNetwork()
@@ -54,26 +62,140 @@ class CharactersFragment: Fragment() {
         val args: CharactersFragmentArgs by navArgs()
         val house = args.HOUSE
 
-        lifecycleScope.launch {
+        val houseName = when (house) {
+            1 -> "Stark"
+            2 -> "Lannister"
+            3 -> "Baratheon"
+            4 -> "Targaryen"
+            else -> {
+                Log.w("House", "Invalid house ID: $house")
+                return
+            }
+        }
+
+        val db = (requireContext().applicationContext as App).getDb()
+        val PAGE_SIZE = 10
+
+        val lastPageKey = intPreferencesKey("last_page_$houseName")
+        val hasNextKey = booleanPreferencesKey("has_next_$houseName")
+
+        var currentPage = 0
+        var hasMore = true
+        val allCharacters = mutableListOf<CharacterResponse>()
+
+        fun updateLoadMoreButton() {
+            binding.btnLoadMore.isEnabled = hasMore
+            binding.btnLoadMore.isVisible = hasMore
+        }
+
+        suspend fun loadNextPage() {
+            if (!hasMore) return
+
             try {
-                val characters = when (house) {
-                    1 -> retrofitApi.getCharactersByHouseName("Stark")
-                    2 -> retrofitApi.getCharactersByHouseName("Lannister")
-                    3 -> retrofitApi.getCharactersByHouseName("Baratheon")
-                    4 -> retrofitApi.getCharactersByHouseName("Targaryen")
-                    else -> emptyList()
+                val pagedResponse = withContext(Dispatchers.IO) {
+                    Log.d("API", "houseName=$houseName page=$currentPage, size=$PAGE_SIZE")
+                    retrofitApi.getCharactersPaged(houseName, currentPage, PAGE_SIZE)
+                }
+                Log.d("API", "Сделали запрос к апи: page=$currentPage, size=$PAGE_SIZE")
+
+                val newItems = pagedResponse.content
+
+                if (newItems.isNotEmpty()) {
+                    val entities = newItems.map { Character.from(it) }
+                    withContext(Dispatchers.IO) {
+                        db.characterDao().insertAll(entities)
+                    }
+                    Log.d("Cache", "Положили в кеш часть данных")
                 }
 
-                if (house == 1 && characters.isNotEmpty()) {
-                    saveStarkBackup(characters)
+                allCharacters.addAll(newItems)
+                adapter.setData(ArrayList(allCharacters))
+
+                hasMore = pagedResponse.hasNext
+                if (hasMore) {
+                    currentPage++
                 }
 
-                Log.d("API", characters.toString())
-                adapter.setData(characters)
+                requireContext().dataStore.edit { settings ->
+                    settings[lastPageKey] = currentPage
+                    settings[hasNextKey] = hasMore
+                }
+                Log.d("DataStore", "сохранили lastPage & hasNext")
+
+                if (house == 1 && allCharacters.size == newItems.size && newItems.isNotEmpty()) {
+                    saveStarkBackup(ArrayList(allCharacters))
+                    Log.d("Backup", "Создаем .txt backup со всеми старками")
+                }
+
+                updateLoadMoreButton()
 
             } catch (e: Exception) {
-                (activity as SingleActivity).showToast("Error: ${e.message}")
-                Log.e("API", "Error", e)
+                Log.e("Paging", "Failed to load page $currentPage", e)
+                (activity as? SingleActivity)?.showToast("Ошибка загрузки: ${e.message}")
+            }
+        }
+
+        fun refreshData() {
+            allCharacters.clear()
+            currentPage = 0
+            hasMore = true
+            adapter.setData(emptyList())
+            updateLoadMoreButton()
+
+            lifecycleScope.launch {
+                try {
+                    withContext(Dispatchers.IO) {
+                        db.characterDao().deleteByHouse(houseName)
+                        (activity)?.debugging("удаляем кеш дома: $houseName")
+                    }
+
+                    requireContext().dataStore.edit { settings ->
+                        settings[lastPageKey] = 0
+                        settings[hasNextKey] = true
+                        (activity)?.debugging("обнуляем data store")
+                    }
+
+                    loadNextPage()
+                    (activity)?.debugging("Загружаем новые данные...")
+                } catch (e: Exception) {
+                    Log.e("Refresh", "Failed to refresh", e)
+                    (activity as? SingleActivity)?.showToast("Ошибка обновления")
+                } finally {
+                    binding.swipeRefreshLayout.isRefreshing = false
+                }
+            }
+        }
+
+        binding.btnLoadMore.setOnClickListener {
+            lifecycleScope.launch {
+                loadNextPage()
+            }
+        }
+
+        lifecycleScope.launch {
+
+            binding.swipeRefreshLayout.setOnRefreshListener {
+                refreshData()
+            }
+
+            val cachedCharacters = withContext(Dispatchers.IO) {
+                db.characterDao().getCharactersByHouse(houseName)?.map { it.toResponse() } ?: emptyList()
+            }
+
+            if (cachedCharacters.isNotEmpty()) {
+                allCharacters.addAll(cachedCharacters)
+                adapter.setData(ArrayList(allCharacters))
+                Log.d("Cache", "Показали ${cachedCharacters.size} элементов из кэша")
+            }
+
+            val prefs = requireContext().dataStore.data.first()
+            currentPage = prefs[lastPageKey] ?: 0
+            hasMore = prefs[hasNextKey] ?: true
+
+            if (cachedCharacters.isEmpty()) {
+                loadNextPage()
+            } else {
+                updateLoadMoreButton()
             }
         }
     }
@@ -87,7 +209,6 @@ class CharactersFragment: Fragment() {
                 activity?.debugging("Backup file already exists, skipping creation")
                 return
             }
-
 
             val content = characters.joinToString("\n\n") { char ->
                 """

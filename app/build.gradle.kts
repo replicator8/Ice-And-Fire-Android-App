@@ -4,6 +4,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin") // add safe args in navigation with navGraph
     id("kotlin-parcelize")
     id("org.jetbrains.kotlin.plugin.serialization")
+    id("kotlin-kapt")
 }
 
 android {
@@ -57,7 +58,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
 
-    // // to use fragments
+    // to use fragments
     implementation(libs.androidx.fragment)
 
     // to use navGraph
@@ -70,11 +71,18 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // retrofit & kotlin serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+//    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     // data store
     implementation("androidx.datastore:datastore-preferences:1.1.1")
+
+    // room
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0")
+
+    kapt("androidx.room:room-compiler:2.6.1")
 }

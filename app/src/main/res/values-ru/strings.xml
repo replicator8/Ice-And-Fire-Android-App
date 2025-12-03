@@ -43,4 +43,6 @@
     <string name="internal_backup_saved">Сохранена</string>
     <string name="internal_backup_not_saved">Не сохранена</string>
     <string name="internal_backup_status">Резервная копия (внутренняя)</string>
+    <string name="recover_file">Восстановить файл</string>
+    <string name="more_button">Еще</string>
 </resources>
