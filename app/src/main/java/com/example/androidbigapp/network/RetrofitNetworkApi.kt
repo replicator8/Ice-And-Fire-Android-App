@@ -15,7 +15,7 @@ interface RetrofitNetworkApi {
     suspend fun getCharactersPaged(@Path("houseName") houseName: String, @Query("page") page: Int, @Query("size") size: Int): PagedResponse<CharacterResponse>
 }
 
-private const val NETWORK_BASE_URL = "http://172.20.10.5:8098/api/got/" // ipconfig getifaddr en0
+private const val NETWORK_BASE_URL = "http://10.245.69.208:8098/api/got/" // ipconfig getifaddr en0  172.20.10.5
 
 class RetrofitNetwork: RetrofitNetworkApi {
 
